@@ -11,57 +11,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuantityViewModels extends ViewModel {
-    private MutableLiveData<List<Food>> foodMutableLiveData = new MutableLiveData<>();
-    public LiveData<List<Food>> getQuantity() { return foodMutableLiveData; }
+    private MutableLiveData<Food> foodMutableLiveData = new MutableLiveData<>();
+    public LiveData<Food> getQuantity() { return foodMutableLiveData; }
 
-    public List<Food> Foods = new ArrayList<>();
-
-    Food chickenChop;
-    Food beefSteak;
+    Food foods = new Food(0,0);
 
     public void addBeefSteak(){
-        if(Foods.isEmpty()){
-            beefSteak = new Food("Beef Steak",0);
-            Foods.add(beefSteak);
-        }
-        beefSteak.setQuantity(beefSteak.getQuantity()+1);
-        foodMutableLiveData.setValue(Foods);
-        Log.d("Food " + beefSteak.getName() + " amount : ", String.valueOf(Foods.get(0).getQuantity()));
+        foods.setQuantityBeefSteak(foods.getQuantityBeefSteak()+1);
+        foodMutableLiveData.setValue(foods);
+        Log.d("Stock Beef Steak : ", String.valueOf(foods.getQuantityBeefSteak()));
     }
 
     public void addChickenChop(){
-        if(Foods.isEmpty()){
-            chickenChop = new Food("Chicken Chop",0);
-            Foods.add(chickenChop);
-        }
-
-        chickenChop.setQuantity(chickenChop.getQuantity()+1);
-        foodMutableLiveData.setValue(Foods);
-        Log.d("Food " + chickenChop.getName() + " amount : ", String.valueOf(Foods.get(1).getQuantity()));
+        foods.setQuantityChickenChop(foods.getQuantityChickenChop()+1);
+        foodMutableLiveData.setValue(foods);
+        Log.d("Stock Chicken chop : ", String.valueOf(foods.getQuantityChickenChop()));
     }
 
     public void removeBeefSteak(){
-        if(Foods.isEmpty()){
-            chickenChop = new Food("Chicken Chop",0);
-            Foods.add(chickenChop);
-        }
-        if(beefSteak.getQuantity() > 0) beefSteak.setQuantity(beefSteak.getQuantity()-1);
-        foodMutableLiveData.setValue(Foods);
-        Log.d("Food " + beefSteak.getName() + " amount : ", String.valueOf(Foods.get(0).getQuantity()));
+        if(foods.getQuantityBeefSteak() > 0) foods.setQuantityBeefSteak(foods.getQuantityBeefSteak()-1);
+        foodMutableLiveData.setValue(foods);
+        Log.d("Stock Beef Steak : ", String.valueOf(foods.getQuantityBeefSteak()));
     }
 
     public void removeChickenChop(){
-        if(chickenChop.getQuantity() > 0) chickenChop.setQuantity(chickenChop.getQuantity()-1);
-        foodMutableLiveData.setValue(Foods);
-        Log.d("Food " + chickenChop.getName() + " amount : ", String.valueOf(Foods.get(1).getQuantity()));
+        if(foods.getQuantityChickenChop() > 0) foods.setQuantityChickenChop(foods.getQuantityChickenChop()-1);
+        foodMutableLiveData.setValue(foods);
+        Log.d("Stock Beef Steak : ", String.valueOf(foods.getQuantityChickenChop()));
     }
 
     public void resetQuantity(){
-        for (Food food : Foods) {
-            food.setQuantity(0);
-        }
-        foodMutableLiveData.setValue(Foods);
-        Log.d("Foods has reset, Away:", String.valueOf(beefSteak.getQuantity()));
-        Log.d("Home:", String.valueOf(chickenChop.getQuantity()));
+//        Log.d("Foods has reset, Away:", String.valueOf(beefSteak.getQuantity()));
+//        Log.d("Home:", String.valueOf(chickenChop.getQuantity()));
     }
 }

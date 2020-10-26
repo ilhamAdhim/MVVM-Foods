@@ -1,22 +1,30 @@
 package com.example.miniproject.models;
 
 public class Food {
-    String name;
-    int quantity;
+    private int quantityBeefSteak, quantityChickenChop ;
 
-    public Food(String name, int quantity) {
-        this.name = name;
-        this.quantity = quantity;
+    public Food(int quantityBeefSteak, int quantityChickenChop) {
+        this.quantityBeefSteak = quantityBeefSteak;
+        this.quantityChickenChop = quantityChickenChop;
+    }
+
+    public int getQuantityBeefSteak() {
+        return quantityBeefSteak;
+    }
+
+    public void setQuantityBeefSteak(int quantityBeefSteak) {
+        this.quantityBeefSteak = quantityBeefSteak;
+    }
+
+    public int getQuantityChickenChop() {
+        return quantityChickenChop;
+    }
+
+    public void setQuantityChickenChop(int quantityChickenChop) {
+        this.quantityChickenChop = quantityChickenChop;
     }
 
     public Food() {}
 
-    public String getName() { return name; }
-
-    public void setName(String name) { this.name = name; }
-
-    public int getQuantity() { return quantity; }
-
-    public void setQuantity(int quantity) { this.quantity = quantity; }
 
 }

@@ -52,8 +52,8 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{Integer.toString(quantityViewModel.getQuantity().quantityBeefSteak)}"
             android:layout_marginTop="28dp"
-            android:text="@{()->quantityViewModel.getQuantity().get(0).quantity}"
             app:layout_constraintEnd_toStartOf="@+id/buttonAdd"
             app:layout_constraintStart_toEndOf="@+id/buttonMin"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
@@ -111,7 +111,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
-            android:text="@{()->quantityViewModel.getQuantity().get(0).quantity}"
+            android:text="@{Integer.toString(quantityViewModel.getQuantity().quantityChickenChop)}"
             app:layout_constraintEnd_toStartOf="@+id/buttonAdd"
             app:layout_constraintHorizontal_bias="0.507"
             app:layout_constraintStart_toEndOf="@+id/buttonMin"
