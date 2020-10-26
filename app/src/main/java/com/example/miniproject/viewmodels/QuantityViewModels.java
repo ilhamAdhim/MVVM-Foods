@@ -19,44 +19,41 @@ public class QuantityViewModels extends ViewModel {
     Food chickenChop;
     Food beefSteak;
 
-    public void addBeefSteak(int amount){
-        if(!Foods.contains(beefSteak)){
-            Foods.add(new Food("Beef Steak",0));
+    public void addBeefSteak(){
+        if(Foods.isEmpty()){
+            beefSteak = new Food("Beef Steak",0);
+            Foods.add(beefSteak);
         }
         beefSteak.setQuantity(beefSteak.getQuantity()+1);
-
         foodMutableLiveData.setValue(Foods);
-        Log.d("Food " + beefSteak.getName() + " amount : ", String.valueOf(beefSteak.getQuantity()));
+        Log.d("Food " + beefSteak.getName() + " amount : ", String.valueOf(Foods.get(0).getQuantity()));
     }
 
     public void addChickenChop(){
-        if(!Foods.contains(chickenChop)){
-            Foods.add(new Food("Chicken Chop",0));
+        if(Foods.isEmpty()){
+            chickenChop = new Food("Chicken Chop",0);
+            Foods.add(chickenChop);
         }
+
         chickenChop.setQuantity(chickenChop.getQuantity()+1);
-
         foodMutableLiveData.setValue(Foods);
-        Log.d("Food " + chickenChop.getName() + " amount : ", String.valueOf(chickenChop.getQuantity()));
+        Log.d("Food " + chickenChop.getName() + " amount : ", String.valueOf(Foods.get(1).getQuantity()));
     }
 
-    public void removeBeefSteak(int amount){
-        if(!Foods.contains(beefSteak)){
-            Foods.add(new Food("Beef Steak",0));
+    public void removeBeefSteak(){
+        if(Foods.isEmpty()){
+            chickenChop = new Food("Chicken Chop",0);
+            Foods.add(chickenChop);
         }
-        beefSteak.setQuantity(beefSteak.getQuantity()-1);
-
+        if(beefSteak.getQuantity() > 0) beefSteak.setQuantity(beefSteak.getQuantity()-1);
         foodMutableLiveData.setValue(Foods);
-        Log.d("Food " + beefSteak.getName() + " amount : ", String.valueOf(beefSteak.getQuantity()));
+        Log.d("Food " + beefSteak.getName() + " amount : ", String.valueOf(Foods.get(0).getQuantity()));
     }
 
-    public void removeChickenChop(int amount){
-        if(!Foods.contains(chickenChop)){
-            Foods.add(new Food("Chicken Chop",0));
-        }
-        chickenChop.setQuantity(chickenChop.getQuantity()-1);
-
+    public void removeChickenChop(){
+        if(chickenChop.getQuantity() > 0) chickenChop.setQuantity(chickenChop.getQuantity()-1);
         foodMutableLiveData.setValue(Foods);
-        Log.d("Food " + chickenChop.getName() + " amount : ", String.valueOf(chickenChop.getQuantity()));
+        Log.d("Food " + chickenChop.getName() + " amount : ", String.valueOf(Foods.get(1).getQuantity()));
     }
 
     public void resetQuantity(){
