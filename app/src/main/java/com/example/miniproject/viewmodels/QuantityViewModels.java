@@ -12,6 +12,7 @@ import java.util.List;
 
 public class QuantityViewModels extends ViewModel {
     private MutableLiveData<Food> foodMutableLiveData = new MutableLiveData<>();
+
     public LiveData<Food> getQuantity() { return foodMutableLiveData; }
 
     Food foods = new Food(0,0);
@@ -41,7 +42,10 @@ public class QuantityViewModels extends ViewModel {
     }
 
     public void resetQuantity(){
-//        Log.d("Foods has reset, Away:", String.valueOf(beefSteak.getQuantity()));
-//        Log.d("Home:", String.valueOf(chickenChop.getQuantity()));
+        foods.setQuantityBeefSteak(0);
+        foods.setQuantityChickenChop(0);
+        foodMutableLiveData.setValue(foods);
+        Log.d("Reset, Chicken chop:", String.valueOf(foods.getQuantityChickenChop()));
+        Log.d("Beef Steak:", String.valueOf(foods.getQuantityBeefSteak()));
     }
 }

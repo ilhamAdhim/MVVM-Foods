@@ -1,7 +1,7 @@
 package com.example.miniproject.models;
 
 public class Food {
-    private int quantityBeefSteak, quantityChickenChop ;
+    private int quantityBeefSteak, quantityChickenChop;
 
     public Food(int quantityBeefSteak, int quantityChickenChop) {
         this.quantityBeefSteak = quantityBeefSteak;
